@@ -20,13 +20,13 @@ mod physics;
 // Properly remove old triggers - done
 // Trigger grouping - done
 // Add CLI stuff - done
-// Add help message
-// Add documentation
+// Add help message - done
+// Add documentation - done
 // Add more random parameters - done
 fn main() {    
     let args: Vec<String> = std::env::args().collect();    
     if args.len() == 1 {
-        println!("Todo: help message"); 
+        println!("Usage instructions can be found at https://github.com/Salmon-e/gdphysics"); 
         return
     }
     let config = Config::new(args.get(1).unwrap().clone()).unwrap();
