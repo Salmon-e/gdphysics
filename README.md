@@ -1,6 +1,10 @@
 # gdphysics
 A tool for simulating objects in Geometry Dash levels. It only works on Windows (for now)
 
+
+https://user-images.githubusercontent.com/77418890/174662790-c5191e96-19e2-46c8-88a2-7a1bd14820dc.mp4
+
+
 # Usage
 
 The program requires only a JSON file as input where all other parameters are specified. An example configuration file is
