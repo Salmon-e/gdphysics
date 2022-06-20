@@ -54,6 +54,8 @@ Subsequent calls will automatically remove previous triggers.
 If something goes wrong and you wish to revert to before, run
 `gdphysics example_config.json restore`
 and the backup will be restored.
+
+If you use this in a project I'd appreciate credit :) 
 # Parameters
 
 Top level parameters
