@@ -85,6 +85,9 @@ pub fn simulate(objects: &mut Vec<Obj>, config: LayerConfig, tracker: &SpeedTrac
         for point in points.iter_mut() {
             *point -= center;
         }
+        if points.len() <= 2 {
+            continue
+        }
         let obj_config_option = config.objects.iter()
             .find(|c| c.group as i32 == *group);
         let default_config = ObjectConfig::new(*group as u16);

@@ -2,14 +2,14 @@ use std::fs::File;
 use std::io::{Read, Error};
 use serde_derive::{Serialize, Deserialize};
 use serde_json::{self, json};
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Config {    
     pub level_name: String,    
     pub path: String,
     pub backup_path: String,
     pub simulations: Vec<LayerConfig>    
 }
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct LayerConfig {
     pub layer: u16,
     #[serde(default = "default_height")]
@@ -31,7 +31,7 @@ pub struct LayerConfig {
     #[serde(default = "default_ground")]
     pub ground: bool
 }
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct ObjectConfig {
     pub group: u16,
     #[serde(default = "default_vel")]

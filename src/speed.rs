@@ -11,7 +11,7 @@ impl SpeedTracker {
                 if let Some(speed) = Speed::from(*id) {
                     if let Some(Bool(b)) = object.get(SpecialCheck) {
                         if *b {
-                            portals.push((speed, object.get_pos().0))                            
+                            portals.push((speed, object.get_pos().0 - speed.width()/2.0))                            
                         }
                     }
                 }
@@ -54,5 +54,14 @@ impl Speed {
             1334 => Some(Quad),
             _ => None
         }
-    } 
+    }
+    pub fn width(&self) -> f32 {
+        match self {
+            Half => 34.0,
+            Normal => 32.0,
+            Double => 50.0,
+            Triple => 65.0,
+            Quad => 69.0,
+        }
+    }
 }

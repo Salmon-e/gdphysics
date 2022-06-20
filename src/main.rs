@@ -29,7 +29,15 @@ fn main() {
         println!("Usage instructions can be found at https://github.com/Salmon-e/gdphysics"); 
         return
     }
-    let config = Config::new(args.get(1).unwrap().clone()).unwrap();
+    let config_path = args.get(1).unwrap();
+    let result = Config::new(config_path.clone());
+    let config = if let Ok(config) = result {
+        config
+    }
+    else {
+        println!("Failed to load config file: {0}", result.unwrap_err());
+        return
+    };
     if args.len() == 3 && args[2] == "restore"{
         let result = std::fs::copy(config.backup_path.clone(), config.path.clone());
         if result.is_ok() {
@@ -40,10 +48,19 @@ fn main() {
         }
         return
     }
-    let mut save = File::open(config.path.clone()).unwrap();
+    let result = File::open(config.path.clone());
+    let mut save = if let Ok(save) = result {
+        save
+    }
+    else {
+        println!("Failed to load save file: {0}", result.unwrap_err());
+        return
+    };
     let mut data = Vec::new();
     let level_name = config.level_name;
-    save.read_to_end(&mut data).unwrap();
+    if let Err(e) = save.read_to_end(&mut data) {
+        println!("Something went wrong while reading the save file: {0}", e)
+    }
     let level = get_level_string(data, Some(&level_name));
     
     if let Ok(old_ls) = level {       
@@ -73,7 +90,7 @@ fn main() {
             let result = std::fs::copy(config.path.clone(), config.backup_path.clone());
             if result.is_ok() {
                 println!("Created backup at {0}", config.backup_path);
-                encrypt_level_string(
+                if let Err(e) = encrypt_level_string(
                     ls,
                     if overwrite {
                         String::new()
@@ -83,7 +100,9 @@ fn main() {
                     }, 
                     path, 
                     Some(level_name)
-                ).unwrap();
+                ) {
+                    println!("Failed to write to save: {0}", e)
+                }
             }
             else {
                 println!("Failed to make backup: {0}", result.unwrap_err())
@@ -91,6 +110,6 @@ fn main() {
         }
     }
     else {
-        println!("{:?}", level.unwrap_err());
+        println!("The save file failed to decrypt: {0}", level.unwrap_err());
     }
 }
