@@ -72,8 +72,10 @@ pub fn simulate(objects: &mut Vec<Obj>, config: LayerConfig, tracker: &SpeedTrac
     let mut collider_set = ColliderSet::new();
     let mut rigid_body_set = RigidBodySet::new();
     let mut handles = Vec::new();
-    let ground = ColliderBuilder::cuboid(1000.0, 0.1).build();
-    collider_set.insert(ground);
+    if config.ground {
+        let ground = ColliderBuilder::cuboid(100000.0, 0.1).build();
+        collider_set.insert(ground);
+    }
     for (group, points) in shapes.iter_mut() {
         let mut center = vector![0.0, 0.0];
         for point in points.iter() {

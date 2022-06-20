@@ -55,7 +55,7 @@ fn main() {
         object_strings.pop();
         let mut objects: Vec<Obj> = object_strings.iter().map(|s|Obj::from(s.clone())).collect();    
         let tracker = speed::SpeedTracker::new(&objects);
-        for layer in config.layers {
+        for layer in config.simulations {
             physics::simulate(&mut objects, layer, &tracker)
         }
         println!("Writing {0} objects", objects.len());

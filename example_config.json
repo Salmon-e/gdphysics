@@ -1,0 +1,17 @@
+{
+    "level_name": "Example Name",
+    "path" : "C:/path/to/CCLocalLevels.dat", 
+    "backup_path" : "C:/path/to/CCLocalLevels Backup.dat",
+    "simulations" : [
+        {
+            "layer" : 1,
+            "gravity" : [0.0, -100.0],
+            "objects" : [
+                {
+                    "group" : 3,
+                    "initial_velocity" : [200.0, 300.0]
+                }
+            ]
+        }
+    ]
+}

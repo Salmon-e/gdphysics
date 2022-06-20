@@ -7,15 +7,13 @@ pub struct Config {
     pub level_name: String,    
     pub path: String,
     pub backup_path: String,
-    pub layers: Vec<LayerConfig>    
+    pub simulations: Vec<LayerConfig>    
 }
 #[derive(Serialize, Deserialize)]
 pub struct LayerConfig {
     pub layer: u16,
     #[serde(default = "default_height")]
     pub height: f32,
-    #[serde(default = "default_start_offset")]
-    pub start_offset: f32,
     #[serde(default = "default_fps")]
     pub fps: f32,
     #[serde(default = "default_interval")]
@@ -29,7 +27,9 @@ pub struct LayerConfig {
     #[serde(default = "default_time")]
     pub sim_time: f32,
     #[serde(default = "default_anchor")]
-    pub anchor_id: i32
+    pub anchor_id: i32,
+    #[serde(default = "default_ground")]
+    pub ground: bool
 }
 #[derive(Serialize, Deserialize)]
 pub struct ObjectConfig {
@@ -79,7 +79,6 @@ fn default_gravity() -> [f32; 2] {[0.0, -9.81 * 30.0]}
 fn default_objects() -> Vec<ObjectConfig> {Vec::new()}
 fn default_density() -> f32 {1.0}
 fn default_dynamic() -> bool {true}
-fn default_start_offset() -> f32 {0.0}
 fn default_height() -> f32 {2100.0}
 fn default_restitution() -> f32 {0.0}
 fn default_linear_damping() -> f32 {0.1}
@@ -91,3 +90,4 @@ fn default_ang_fixed() -> bool {false}
 fn default_rotation_modifier() -> f32 {0.9}
 fn default_time() -> f32 {5.0}
 fn default_anchor() -> i32 {41}
+fn default_ground() -> bool {true}

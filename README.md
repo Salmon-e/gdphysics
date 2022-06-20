@@ -75,9 +75,9 @@ Simulation level parameters
 | `fps`                        | How many frames per second the simulation runs       | float          | 60      |
 | `keyframe_interval`          | How many frames between each keyframe                | integer        | 6       |
 | `gravity`                    | The gravity vector                                   | [float, float] | [0, -294.3]  |
-| `rotation_duration_modifier` | The multiplier for the duration of rotation triggers | float          | 0.9     |
+| `rotation_duration_modifier`* | The multiplier for the duration of rotation triggers | float          | 0.9     |
 | `sim_time`                   | Length of simulation in seconds                      | float          | 5.0     |
-| `anchor_id`                  | Object ID of the anchor                              | integer        | 41      |
+| `anchor_id`**                  | Object ID of the anchor                              | integer        | 41      |
 | `ground`                     | Whether ground is there                              | bool           | true    |
 | `objects`                    | List of per object parameters                        | list           | empty   |
 
@@ -96,3 +96,7 @@ Object level parameters
 | `friction`         | The friction coefficient                   | float          | 1.0     |
 | `positon_fixed`    | Whether the object's position is fixed     | bool           | false   |
 | `rotation_fixed`   | Whether the object's rotation is fixed     | bool           | false   |
+
+*rotation triggers do not overlap, so the rotation duration is slightly decreased to account for little overlaps. If rotation breaks, try decreasing this value, and if it is too choppy, try increasing it a little. 
+
+**If you want to change when the simulation starts, place an anchor object on the target layer at the desired position. By default the first chain in the chain tab will be viewed as an anchor, but you can change it to any object by setting this parameter.
