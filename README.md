@@ -1,5 +1,5 @@
 # gdphysics
-A tool for simulating objects in Geometry Dash levels. 
+A tool for simulating objects in Geometry Dash levels. It only works on Windows (for now)
 
 # Usage
 
