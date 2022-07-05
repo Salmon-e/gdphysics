@@ -1,7 +1,7 @@
 {
-    "level_name": "Example Name",
-    "path" : "C:/path/to/CCLocalLevels.dat", 
-    "backup_path" : "C:/path/to/CCLocalLevels Backup.dat",
+    "level_name": "speedtest",
+    "path" : "C:/Users/Salmon/AppData/Local/GeometryDash/CCLocalLevels.dat", 
+    "backup_path" : "C:/Users/Salmon/AppData/Local/GeometryDash/CCLocalLevelsBackup.dat",
     "simulations" : [
         {
             "layer" : 1,
